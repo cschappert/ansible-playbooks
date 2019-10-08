@@ -1,0 +1,28 @@
+- hosts: localhost
+  become: true
+  tasks:
+          - name: Add atom apt signing key
+            apt_key:
+                    url: https://packagecloud.io/AtomEditor/atom/gpgkey
+                    state: present
+
+          - name: Add atom repo
+            apt_repository:
+                    repo: deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main
+                    state: present
+                    filename: atom
+
+          - name: Install packages
+            apt: name={{item}}
+            with_items:
+                    - vim
+                    - tmux
+                    - emacs
+                    - chromium
+                    - dconf-editor
+                    - fonts-noto
+                    - materia-gtk-theme
+                    - fonts-roboto
+                    - adapta-gtk-theme
+                    - papirus-icon-theme
+                    - atom
