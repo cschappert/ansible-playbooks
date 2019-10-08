@@ -12,10 +12,25 @@
                     state: present
                     filename: atom
 
+          - name: Add spotify apt signing key
+            apt_key:
+                    url: https://download.spotify.com/debian/pubkey.gpg
+                    state: present
+
+          - name: Add spotify repo
+            apt_repository:
+                    repo: deb http://repository.spotify.com stable non-free
+                    state: present
+                    filename: spotify
+
           - name: Install packages
             apt: name={{item}}
             with_items:
                     - vim
+                    - gnome-shell-extension-dashtodock
+                    - snapd
+                    - ibus-mozc
+                    - spotify-client
                     - tmux
                     - emacs
                     - chromium
