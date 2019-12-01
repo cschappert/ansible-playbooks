@@ -38,13 +38,17 @@
             apt: name={{item}}
             with_items:
                     - vim
+                    - curl
                     - flatpak
                     - scala
                     - sbt
+                    - python3-distutils
                     - gnome-shell-extension-dashtodock
+                    - gnome-shell-extension-appindicator
                     - snapd
                     - ibus-mozc
                     - spotify-client
+                    - libtinfo5
                     - tmux
                     - emacs
                     - chromium
