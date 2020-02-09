@@ -51,7 +51,6 @@
                     - libtinfo5
                     - tmux
                     - emacs
-                    - chromium
                     - dconf-editor
                     - fonts-noto
                     - materia-gtk-theme
