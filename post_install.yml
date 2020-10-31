@@ -12,9 +12,25 @@
                     state: present
                     filename: atom
 
+          - name: Add microsoft apt signing key
+            apt_key:
+                    url: https://packages.microsoft.com/keys/microsoft.asc
+                    state: present
+
+          - name: Add vscode repo
+            apt_repository:
+                    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+                    state: present
+                    filename: vscode
+
           - name: Add spotify apt signing key
             apt_key:
                     url: https://download.spotify.com/debian/pubkey.gpg
+                    state: present
+
+          - name: Add new spotify apt signing key
+            apt_key:
+                    url: https://download.spotify.com/debian/pubkey_0D811D58.gpg
                     state: present
 
           - name: Add spotify repo
@@ -37,24 +53,24 @@
           - name: Install packages
             apt: name={{item}}
             with_items:
-                    - vim
-                    - curl
-                    - flatpak
-                    - scala
-                    - sbt
-                    - python3-distutils
-                    - gnome-shell-extension-dashtodock
-                    - gnome-shell-extension-appindicator
-                    - snapd
-                    - ibus-mozc
-                    - spotify-client
-                    - libtinfo5
-                    - tmux
-                    - emacs
-                    - dconf-editor
-                    - fonts-noto
-                    - materia-gtk-theme
-                    - fonts-roboto
                     - adapta-gtk-theme
+                    - chromium
+                    - code
+                    - curl
+                    - dconf-editor
+                    - emacs
+                    - flatpak
+                    - fonts-noto
+                    - fonts-roboto
+                    - git
+                    - gnome-shell-extension-appindicator
+                    - ibus-mozc
+                    - libtinfo5
                     - papirus-icon-theme
-                    - atom
+                    - python3-distutils
+                    - sbt
+                    - scala
+                    - spotify-client
+                    - tmux
+                    - vim
+
