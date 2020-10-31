@@ -23,6 +23,17 @@
                     state: present
                     filename: vscode
 
+          - name: Add docker apt signing key
+            apt_key:
+                    url: https://download.docker.com/linux/debian/gpg
+                    state: present
+
+          - name: Add docker repo
+            apt_repository:
+                    repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
+                    state: present
+                    filename: docker
+
           - name: Add spotify apt signing key
             apt_key:
                     url: https://download.spotify.com/debian/pubkey.gpg
@@ -54,11 +65,12 @@
             apt: name={{item}}
             with_items:
                     - adapta-gtk-theme
-                    - chromium
                     - code
                     - curl
                     - dconf-editor
+                    - docker-ce
                     - emacs
+                    - firmware-misc-nonfree
                     - flatpak
                     - fonts-noto
                     - fonts-roboto
@@ -68,6 +80,7 @@
                     - libtinfo5
                     - papirus-icon-theme
                     - python3-distutils
+                    - rclone
                     - sbt
                     - scala
                     - spotify-client
